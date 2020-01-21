@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <!-- Editable table -->
+    <div class="card">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{ taglist_check }}</h3>
+        <div class="card-body">
+            <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
+              class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Voice pattern id</th>
+                        <th class="text-center">Voice body</th>
+                        <th class="text-center">Voice data</th>
+                        <th class="text-center">Voice HMM</th>
+                        <th class="text-center">Emotional and logical accent</th>
+                        <th class="text-center">Most common similar words</th>
+                        <th class="text-center">Pronunciation date(Registred)</th>
+                        <th class="text-center">Edit</th>
+                        <th class="text-center">Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in voice_patterns %}
+                        <tr>
+                            <td class="pt-3-half" contenteditable="true">{{row.id}}</td>
+                            <td class="pt-3-half" contenteditable="true">{{row.voice_body}}</td>
+                            <td class="pt-3-half" contenteditable="true">{{row.voice_data}}</td>
+                            <td class="pt-3-half" contenteditable="true">{{row.voice_hmm}}</td>
+                            <td class="pt-3-half" contenteditable="true">{{row.voice_emotion_logic_accent}}</td>
+                            <td class="pt-3-half" contenteditable="true">{{row.voice_similar_words}}</td>
+                            <td class="pt-3-half" contenteditable="true">{{row.pronunciation_date}}</td>
+                            <td>
+                                <span class="table-remove" ><button type="button" class="btn btn-danger btn-rounded btn-sm my-0" >
+                                    <a href="/edit/voice_pattern?id={{ row.id }}">Edit</a></button></span>
+                            </td>
+                            <td>
+                                <span class="table-remove"><button type="button"
+                                                                   class="btn btn-danger btn-rounded btn-sm my-0" >
+                                    <a href="/delete/voice_pattern?id={{ row.id }}">Remove</a></button></span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    <!-- This is our clonable table line -->
+
+                    </tbody>
+                </table>
+            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0" allign="center">
+                                    <a href="/create/voice_pattern">Create</a></button></span>
+            </div>
+        </div>
+    </div>
+    <!-- Editable table -->
+{% endblock %}

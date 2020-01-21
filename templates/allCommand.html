@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <!-- Editable table -->
+    <div class="card">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">{{ taglist_check }}</h3>
+        <div class="card-body">
+            <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
+              class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Command id</th>
+                        <th class="text-center">Taglist check</th>
+                        <th class="text-center">Text in command</th>
+                        <th class="text-center">Expansion</th>
+                        <th class="text-center">Versions</th>
+                        <th class="text-center">Pronunciation date</th>
+                        <th class="text-center">Decode rating</th>
+                        <th class="text-center">Command list id</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in command %}
+                        <tr>
+                            <td class="pt-3-half" contenteditable="true">{{ row.id }}</td>
+                            <td class="pt-3-half" contenteditable="true">{{ row.taglist_check }}</td>
+                            <td class="pt-3-half" contenteditable="true">{{ row.command_body }}</td>
+                            <td class="pt-3-half" contenteditable="true">{{ row.expansion }}</td>
+                            <td class="pt-3-half" contenteditable="true">{{ row.versions }}</td>
+                            <td class="pt-3-half" contenteditable="true">{{ row.pronunciation_date }}</td>
+                            <td class="pt-3-half" contenteditable="true">{{ row.rating }}</td>
+                            <td class="pt-3-half" contenteditable="true">{{ row.command_list_id }}</td>
+                            <td>
+                                <span class="table-remove"><button type="button"
+                                                                   class="btn btn-danger btn-rounded btn-sm my-0">
+                                    <a href="/edit/command?id={{ row.id }}">Edit</a></button></span>
+                            </td>
+                            <td>
+                                <span class="table-remove"><button type="button"
+                                                                   class="btn btn-danger btn-rounded btn-sm my-0">
+                                    <a href="/delete/command?id={{ row.id }}">Remove</a></button></span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    <!-- This is our clonable table line -->
+
+                    </tbody>
+                </table>
+                <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0" allign="center">
+                                    <a href="/create/command">Create</a></button></span>
+            </div>
+        </div>
+    </div>
+    <!-- Editable table -->
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<!--https://www.codeply.com/go/nhbdi2FkJm-->
+
+
+<div class="col-md-6 mx-auto">
+
+    <!-- form card voice_body -->
+    <div class="card rounded-0">
+
+        <div class="card-header">
+            <h3 class="mb-0">{{form_taglist_check}}</h3>
+        </div>
+        <div class="card-body">
+
+            <form class="form"  action = "/{{action}}" method = post >
+                {{ form.hidden_tag() }}
+
+
+           <div class="form-group">
+                        {{ form.voice_body.label }}
+                        {{ form.voice_body(class_="form-control") }}
+
+                        {% if form.voice_body.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.voice_body.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.voice_data.label }}
+                        {{ form.voice_data(class_="form-control") }}
+
+                        {% if form.voice_data.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.voice_data.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.voice_hmm.label }}
+                        {{ form.voice_hmm(class_="form-control") }}
+
+                        {% if form.voice_hmm.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.voice_hmm.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.voice_emotion_logic_accent.label }}
+                        {{ form.voice_emotion_logic_accent(class_="form-control") }}
+
+                        {% if form.voice_emotion_logic_accent.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.voice_emotion_logic_accent.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.voice_similar_words.label }}
+                        {{ form.voice_similar_words(class_="form-control") }}
+
+                        {% if form.voice_similar_words.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.voice_similar_words.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                {{ form.submit(class_="btn btn-success") }}
+            </form>
+        </div>
+        <!--/card-block-->
+    </div>
+    <!-- /form card voice_body -->
+
+</div>
+
+</div>
+
+
+
+
+{% endblock %}
